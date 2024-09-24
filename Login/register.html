@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatIn - Registro</title>
+  <link rel="icon" href="./Imagens/icone.png" type="image/png">
+  <link rel="stylesheet" href="styles-register.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="./Imagens/logo-chatin.png" alt="ChatIn Logo" class="logo">
+      <h1>ChatIn</h1>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <section id="register">
+      <h2>Crie sua conta</h2>
+      <form id="formRegister" action="#" onsubmit="return validarRegistro(event)">
+        <section id="dados">
+          <label for="fullname">Nome Completo:</label><br>
+          <input type="text" id="fullname" name="fullname" required><br><br>
+          
+          <label for="username">Nome de Usuário:</label><br>
+          <input type="text" id="username" name="username" required><br><br>
+          
+          <label for="nickname">Apelido:</label><br>
+          <input type="text" id="nickname" name="nickname" required><br><br>
+          
+          <label for="senha">Senha:</label><br>
+          <input type="password" id="senha" name="senha" required><br><br>
+        </section>
+        
+        <div class="form-actions">
+          <input type="submit" value="Registrar" class="register-btn">
+          <a href="./login.html" class="login-link">Já tem uma conta? Faça login</a>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <footer id="footer">
+    <p>&copy; 2024 ChatIn - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
