@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatIn - Login</title>
+  <link rel="icon" href="./Imagens/icone.png" type="image/png">
+  <link rel="stylesheet" href="styles-login.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="./Imagens/logo-chatin.png" alt="ChatIn Logo" class="logo">
+      <h1>ChatIn</h1>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <section id="login">
+      <h2>Faça seu login</h2>
+      <form id="formLogin" action="#" onsubmit="return validarLogin(event)">
+        <section id="dados">
+          <label for="username">Usuário:</label><br>
+          <input type="text" id="username" name="username" required><br><br>
+          
+          <label for="senha">Senha:</label><br>
+          <input type="password" id="senha" name="senha" required><br><br>
+        </section>
+        
+        <div class="form-actions">
+          <input type="submit" value="Entrar" class="login-btn">
+          <a href="./register.html" class="register-link">Registre-se</a>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <footer id="footer">
+    <p>&copy; 2024 ChatIn - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
