@@ -11,14 +11,14 @@ async function carregarConversasUsuario() {
         }
 
         const conversas = await response.json();
-        exibirListaDeContatos(conversas);
+        exibirListaDeContatos(conversas, token);
     } catch (error) {
         console.error('Erro ao carregar as conversas:', error);
     }
 }
 
 // Função para exibir a lista de contatos na sidebar
-function exibirListaDeContatos(conversas) {
+function exibirListaDeContatos(conversas, token) {
     const contactList = document.querySelector('.contact-list');
     contactList.innerHTML = ''; // Limpa a lista antes de adicionar os contatos
 
@@ -28,13 +28,13 @@ function exibirListaDeContatos(conversas) {
         contactElement.innerHTML = `
             <div class="contact-name">${conversa.apelido}</div>
         `;
-        contactElement.onclick = () => loadConversation(conversa.id, conversa.apelido);
+        contactElement.onclick = () => loadConversation(conversa.id, conversa.apelido, token);
         contactList.appendChild(contactElement);
     });
 }
 
 // Função para carregar uma conversa específica quando um contato é clicado
-async function loadConversation(conversaId, contactName) {
+async function loadConversation(conversaId, contactName, token) {
     document.getElementById('contact-name').innerText = contactName;
     const chatBody = document.getElementById('chat-body');
     chatBody.innerHTML = ''; // Limpar mensagens anteriores
@@ -48,10 +48,12 @@ async function loadConversation(conversaId, contactName) {
         const mensagens = await response.json();
         mensagens.forEach(msg => {
             const messageElement = document.createElement('div');
-            messageElement.classList.add('message', msg.sender === 'Você' ? 'sent' : 'received');
+            // Considera 'Você' como fk_user !== 2 (no caso o usuário atual é 2)
+            const sender = msg.fk_user === 2 ? 'Você' : contactName; // Ajuste conforme o usuário autenticado
+            messageElement.classList.add('message', sender === 'Você' ? 'sent' : 'received');
             messageElement.innerHTML = `
-                <div class="message-text">${msg.message}</div>
-                <div class="message-time">${msg.time}</div>
+                <div class="message-text">${msg.mensagem}</div>
+                <div class="message-time">${new Date(msg.dt_msg_send).toLocaleTimeString()}</div>
             `;
             chatBody.appendChild(messageElement);
         });
@@ -59,6 +61,7 @@ async function loadConversation(conversaId, contactName) {
         console.error('Erro ao carregar a conversa:', error);
     }
 }
+
 
 // Função para enviar uma nova mensagem
 document.getElementById('send-btn').addEventListener('click', () => {
