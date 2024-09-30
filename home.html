@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatIn - Home</title>
+    <link rel="stylesheet" href="Styles/styles-home.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar de contatos -->
+        <div class="sidebar">
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Procurar conversas...">
+            </div>
+            <div class="contact-list">
+                <div class="contact" onclick="loadConversation('João')">
+                    <div class="contact-name">João</div>
+                </div>
+                <div class="contact" onclick="loadConversation('Maria')">
+                    <div class="contact-name">Maria</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Janela de conversa -->
+        <div class="chat-window">
+            <div class="chat-header">
+                <div id="contact-name">Selecione um contato</div>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <!-- Mensagens serão injetadas aqui -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Escreva uma mensagem...">
+                <button id="send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/chats.js"></script>
+    <script src="Scripts/home.js"></script>
+</body>
+</html>

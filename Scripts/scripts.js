@@ -19,8 +19,9 @@ async function validarLogin(event) {
 
     if (response.ok) {
       const { token } = data;
-      sessionStorage.setItem('token', token);
-      window.location.href = './area-admin.html';
+      localStorage.setItem('token', token);
+      console.log('Login Realisado');
+      window.location.href = '../home.html';
       
     } else {
       alert('Usuário ou senha inválidos');
